@@ -59,6 +59,14 @@ export async function initDB() {
     )
   `;
 
+  await sql`
+    CREATE TABLE IF NOT EXISTS challenges (
+      username TEXT PRIMARY KEY,
+      challenge TEXT NOT NULL,
+      expires_at TIMESTAMPTZ NOT NULL
+    )
+  `;
+
   await sql`INSERT INTO users (username) VALUES ('adas') ON CONFLICT (username) DO NOTHING`;
   await sql`INSERT INTO users (username) VALUES ('roksanka') ON CONFLICT (username) DO NOTHING`;
 }

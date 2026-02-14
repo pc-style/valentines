@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: "Missing username or credential" });
   }
 
-  const expectedChallenge = getChallenge(username);
+  const expectedChallenge = await getChallenge(username);
   if (!expectedChallenge) {
     return res.status(400).json({ error: "Challenge expired or not found" });
   }

@@ -1,15 +1,20 @@
-const challenges = new Map<string, { challenge: string; expires: number }>();
+import { sql } from "./_db.js";
 
-export function storeChallenge(username: string, challenge: string): void {
-  challenges.set(username, { challenge, expires: Date.now() + 5 * 60 * 1000 });
+export async function storeChallenge(username: string, challenge: string): Promise<void> {
+  const expiresAt = new Date(Date.now() + 5 * 60 * 1000).toISOString();
+  await sql`
+    INSERT INTO challenges (username, challenge, expires_at)
+    VALUES (${username}, ${challenge}, ${expiresAt})
+    ON CONFLICT (username) DO UPDATE SET challenge = ${challenge}, expires_at = ${expiresAt}
+  `;
 }
 
-export function getChallenge(username: string): string | null {
-  const entry = challenges.get(username);
-  if (!entry || entry.expires < Date.now()) {
-    challenges.delete(username);
-    return null;
-  }
-  challenges.delete(username);
-  return entry.challenge;
+export async function getChallenge(username: string): Promise<string | null> {
+  const result = await sql`
+    SELECT challenge FROM challenges
+    WHERE username = ${username} AND expires_at > NOW()
+  `;
+  await sql`DELETE FROM challenges WHERE username = ${username}`;
+  if (result.rows.length === 0) return null;
+  return result.rows[0].challenge as string;
 }

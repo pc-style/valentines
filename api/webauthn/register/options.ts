@@ -54,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
     });
 
-    storeChallenge(username, options.challenge);
+    await storeChallenge(username, options.challenge);
 
     return res.status(200).json(options);
   } catch (error) {
