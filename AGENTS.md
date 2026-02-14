@@ -40,7 +40,7 @@
 - **Hardcoded users**: "adas" and "roksanka" (max 2 users, max 3 passkeys each)
 
 ## Environment Variables
-- `POSTGRES_URL` -- Vercel Postgres connection string
+- `DATABASE_URL` -- Neon Postgres connection string (via Vercel Marketplace)
 - `BLOB_READ_WRITE_TOKEN` -- Vercel Blob storage token
 - `REGISTRATION_KEY` -- Shared key for passkey registration + programmatic API
 - `WEBAUTHN_RP_ID` -- WebAuthn relying party ID (e.g., domain)

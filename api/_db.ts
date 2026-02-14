@@ -1,10 +1,21 @@
-import { createPool } from "@vercel/postgres";
+import { createPool, type VercelPool } from "@vercel/postgres";
 
-const pool = createPool({
-  connectionString: process.env.DATABASE_URL,
-});
+type Primitive = string | number | boolean | undefined | null;
 
-export const sql = pool.sql;
+let pool: VercelPool | null = null;
+
+function getPool(): VercelPool {
+  if (!pool) {
+    pool = createPool({
+      connectionString: process.env.DATABASE_URL,
+    });
+  }
+  return pool;
+}
+
+export function sql(strings: TemplateStringsArray, ...values: Primitive[]) {
+  return getPool().sql(strings, ...values);
+}
 
 export async function initDB() {
   await sql`
