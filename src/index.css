@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Gamja Flower";
+  src: url("https://fonts.gstatic.com/s/gamjaflower/v22/6NUR8FiKJGBIjyvBchci0CsE0l6L.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3bmX5slCNuHLi8bLeY9MK7whWMhyjQAllvuQ.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQEl5fuQ.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Special Elite";
+  src: url("https://fonts.gstatic.com/s/specialelite/v19/XLYgIZbkc4JPUL5CVArUVL0ntnAOSA.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDTbtPY_Q.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtbK-F2rA0s.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  /* -- Polaroid Drift section -- */
+  --color-drift-bg: oklch(92% 0.04 350);
+  --color-drift-bg-deep: oklch(85% 0.06 345);
+  --color-drift-cream: oklch(96% 0.01 90);
+  --color-drift-gold: oklch(78% 0.12 75);
+  --color-drift-rose: oklch(72% 0.1 350);
+  --color-drift-text: oklch(35% 0.04 350);
+
+  /* -- Film Reel section -- */
+  --color-film-sky-from: oklch(90% 0.06 350);
+  --color-film-sky-to: oklch(85% 0.08 340);
+  --color-film-strip: oklch(18% 0.005 0);
+  --color-film-sprocket: oklch(25% 0.005 0);
+  --color-film-cream: oklch(95% 0.015 80);
+  --color-film-stamp: oklch(75% 0.08 50);
+
+  /* -- Warm shared tokens -- */
+  --color-warm-bg: oklch(94% 0.03 350);
+  --color-warm-bg-deep: oklch(88% 0.05 345);
+  --color-warm-text: oklch(30% 0.04 350);
+  --color-warm-text-muted: oklch(50% 0.03 350);
+  --color-warm-gold: oklch(78% 0.12 75);
+  --color-warm-cream: oklch(97% 0.01 80);
+  --color-pink-heart: oklch(68% 0.18 350);
+
+  --font-handwriting: "Gamja Flower", cursive;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-typewriter: "Special Elite", monospace;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+@theme inline {
+  --animate-heart-float: heartFloat 8s ease-in-out infinite;
+  --animate-heart-pulse: heartPulse 1.5s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
+  --animate-gentle-sway: gentleSway 3s ease-in-out infinite;
+  --animate-film-grain: filmGrain 0.5s steps(10) infinite;
+  --animate-draw-line: drawLine 2s ease-in-out forwards;
+
+  @keyframes heartFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-18px) rotate(5deg); }
+    50% { transform: translateY(-8px) rotate(-3deg); }
+    75% { transform: translateY(-22px) rotate(4deg); }
+  }
+  @keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes gentleSway {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+  @keyframes filmGrain {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-1px, -1px); }
+    20% { transform: translate(1px, 0px); }
+    30% { transform: translate(0px, 1px); }
+    40% { transform: translate(-1px, 1px); }
+    50% { transform: translate(1px, -1px); }
+    60% { transform: translate(-1px, 0px); }
+    70% { transform: translate(0px, -1px); }
+    80% { transform: translate(1px, 1px); }
+    90% { transform: translate(-1px, -1px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drawLine {
+    from { stroke-dashoffset: 100%; }
+    to { stroke-dashoffset: 0%; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(75% 0.1 350 / 0.4);
+  border-radius: 3px;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.4s ease;
+}
+
+/* Selection color */
+::selection {
+  background: oklch(68% 0.18 350 / 0.3);
+}
